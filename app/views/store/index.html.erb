@@ -1,0 +1,15 @@
+<h1>Shop List</h1>
+<% @products.each do |product| %>
+  <div class="entry">
+  	<%= image_tag(product.image_url) %>
+  	<h3><%= product.title %></h3>
+  	<%= sanitize(product.description) %>
+  	<div class="price_line">
+  		<!-- <span class="price"><%= number_to_currency( product.price) %></span>	It is doller $ ! -->
+  		<!-- 		 <%= sprintf("￥%0.02f",  product.price)  %>		 -->
+  		<span class="price"><%= number_to_currency(product.price,  unit: "￥") %>	</span>
+  		<%= button_to '加入购物车 ', line_items_path(product_id: product ) %>	
+  	</div>
+  </div>
+ <% end %>
+
